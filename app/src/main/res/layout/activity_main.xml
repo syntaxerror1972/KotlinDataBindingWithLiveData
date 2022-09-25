@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainViewModelObj"
+            type="com.syntaxerror.kotlindatabindingwithlivedata.viewmodel.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".ui.MainActivity">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="@style/textView"
+            android:text="@={mainViewModelObj.noteLiveData}">
+
+        </EditText>
+
+        <TextView
+            style="@style/textView"
+            android:id="@+id/txtNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{mainViewModelObj.noteLiveData}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/m1m"
+                android:onClick="@{()-> mainViewModelObj.updateNote()}"
+                android:text="Update"></Button>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/m1m"
+                android:onClick="@{()-> mainViewModelObj.resetNote()}"
+                android:text="Reset"></Button>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
